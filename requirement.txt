@@ -1,0 +1,8 @@
+streamlit
+opencv-python
+mediapipe
+deepface
+speechrecognition
+pyaudio
+textblob
+numpy
