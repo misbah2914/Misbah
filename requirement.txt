@@ -3,6 +3,6 @@ opencv-python-headless
 mediapipe
 deepface
 speechrecognition
-pyaudio
+sounddevice
 textblob
 numpy
