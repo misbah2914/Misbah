@@ -12,11 +12,19 @@ pose = mp_pose.Pose()
 
 # Function to analyze speech
 def transcribe_speech():
+    uploaded_audio = st.file_uploader("Upload an audio file", type=["wav"])
+
+if uploaded_audio is not None:
     recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("🎙 Speak now...")
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
+    with sr.AudioFile(uploaded_audio) as source:
+        audio = recognizer.record(source)
+        try:
+            text = recognizer.recognize_google(audio)
+            st.write("You said:", text)
+        except sr.UnknownValueError:
+            st.write("Sorry, could not understand the audio.")
+        except sr.RequestError:
+            st.write("Speech Recognition service is unavailable.")
         try:
             text = recognizer.recognize_google(audio)
             return text
