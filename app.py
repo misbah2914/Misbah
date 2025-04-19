@@ -16,7 +16,7 @@ def transcribe_speech():
 
 if uploaded_audio is not None:
     recognizer = sr.Recognizer()
- uploaded_audio = st.file_uploader("Upload an audio file", type=["wav"])
+uploaded_audio = st.file_uploader("Upload an audio file", type=["wav"])
 
 if uploaded_audio is not None:
     recognizer = sr.Recognizer()
