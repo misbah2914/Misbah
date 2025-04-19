@@ -22,19 +22,15 @@ if uploaded_audio is not None:
     recognizer = sr.Recognizer()
     with sr.AudioFile(uploaded_audio) as source:
         audio = recognizer.record(source)
-        try:
+
+    try:
             text = recognizer.recognize_google(audio)
             st.write("You said:", text)
-        except sr.UnknownValueError:
+    except sr.UnknownValueError:
             st.write("Sorry, could not understand the audio.")
-        except sr.RequestError:
+    except sr.RequestError:
             st.write("Speech Recognition service is unavailable.")
-        try:
-            text = recognizer.recognize_google(audio)
-            return text
-        except:
-            return "Speech not recognized."
-
+    
 def analyze_speech(text):
     filler_words = ["um", "uh", "like", "you know", "so"]
     words = text.lower().split()
